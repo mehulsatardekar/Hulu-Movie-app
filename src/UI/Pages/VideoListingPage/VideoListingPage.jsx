@@ -37,12 +37,6 @@ const VideoListingPage = () => {
       }
     }
 
-      //console.log(cmp(videos)('Horror'));
-
-    
-      //console.log(videos.filter(v => v.types.includes(type) ));
-      //console.log('hey',cmp(videos)(videoCategory));
-
   return (
     <>
 
