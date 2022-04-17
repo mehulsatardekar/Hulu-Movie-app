@@ -1,7 +1,13 @@
 @import url('https://framer-ui.netlify.app/components/framer.css');
+
+:root{
+    --col-white:white;
+    --col-black: black;
+    --btn-bg:rgba(37, 36, 36, 0.493);
+}
 .header{
     position: relative;
-    background-color: black;
+    background-color: var(--col-black);
     height: 90vh;
     min-height: 25rem;
     width: 100%;
@@ -14,7 +20,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: black;
+    background-color: var(--col-black);
     opacity: 0;
     z-index: 1;
 }
@@ -36,8 +42,8 @@ video {
 }
 
 .video-img-title{
-    max-width: 330px;
-    margin-top: 150px;
+    max-width: 20.625rem;
+    margin-top: 9.375rem;
     margin-left: 3rem;
 }
 
@@ -48,7 +54,7 @@ video {
 }
 
 .text-white{
-    color: white;
+    color: var(--col-white);
 }
 
 .w-50{
@@ -65,9 +71,9 @@ video {
 }
 
 .movie-rating-btn{
-    background: rgba(37, 36, 36, 0.493);
+    background: var(--btn-bg);
     border: 0;
-    color: white;
+    color: var(--col-white);
     border-radius: 3px;
 }
 
@@ -78,12 +84,12 @@ video {
 }
 
 .play-btn{
-    background: rgba(37, 36, 36, 0.493);
+    background: var(--btn-bg);
     border: 0;
-    color: white;
+    color: var(--col-white);
 }
 
 .play-btn:hover{
-   background: white;
-   color: black;
+   background: var(--col-white);;
+   color: var(--col-black);;
 }
