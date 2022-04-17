@@ -1,0 +1,48 @@
+@import url('https://framer-ui.netlify.app/components/framer.css');
+
+:root{
+    --icon-bg-black: black;
+    --icon-col:white;
+    --bg-card:white;
+}
+
+.icon{
+    position: absolute;
+    top:0.75rem;
+    right: 0.75rem;
+    padding: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: rgba(0,0,0,0.5);
+    color: var(--icon-col);
+    font-size: 1.375rem;
+    border-radius: 50%;
+}
+
+
+
+.icon-bg-dark{
+    background: var(--icon-bg-black);
+}
+
+
+.movie-card{
+    background: var(--bg-card);
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.video-card{
+    background: #282b30;
+    color: var(--bg-card);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+@media only screen and (min-width:300px) and (max-width:600px) {
+  
+    .ui-card-width-300 {
+       width: 21.55rem;
+
+    }
+}
