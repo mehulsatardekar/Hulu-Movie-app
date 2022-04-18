@@ -1,0 +1,21 @@
+:root{
+    --bg-card: #282b30;
+}
+.list-card{
+    border:1px solid rgba(0,0,0,0.2);
+    background : var(--bg-card);
+    padding: 1rem 2rem;
+    border-radius: 7px;
+}
+
+.playlist-text{
+  text-decoration: none;
+  color: whitesmoke;
+
+}
+
+.playlist-text:hover{
+    text-decoration: underline;
+    transition: all 3s ;
+
+}
