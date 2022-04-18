@@ -1,0 +1,22 @@
+:root{
+  --txt-light:#a8a8a8;
+}
+.mt-3{
+  margin-top: 3.5rem;
+}
+
+.video-lists-container>.pills{
+  color:  var(--txt-light) ;
+}
+.video-lists-container>.pills:focus{
+  background: var(--col-primary);
+  color: var(--text-col-white);
+}
+
+
+.video-lists-container{
+    width: 90%;
+    margin: auto;
+    padding: 1.2rem 0;
+  }
+
