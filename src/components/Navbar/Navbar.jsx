@@ -123,7 +123,7 @@ const Navbar = () => {
               className={({ isActive }) => (isActive ? "actives" : "inactives")}
             >
               <li className="pb-1 nav-text  flex flex-align-item-center gap-1 badge">
-                <span className="material-icons label-text">watch_later</span>
+                <span className="material-icons label-text ">watch_later</span>
 
                 <span className=" label-text">
                   Watch Later{" "}
@@ -157,11 +157,11 @@ const Navbar = () => {
               <div className="nav-dropdown">
                 <span className="nav-dropbtn label-text actives">Settings</span>
                 <div className="nav-dropdown-content flex flex-column gap ">
-                  <span className="py pt-1 nav-dropdown-option">
+                  <span className="py pt-1 nav-dropdown-option actives">
                     Welcome {userDetails[0]?.username}
                   </span>
                   <span
-                    className=" nav-dropdown-option"
+                    className=" nav-dropdown-option actives"
                     onClick={signoutUser}
                   >
                     Signout
