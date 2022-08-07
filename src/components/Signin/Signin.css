@@ -19,8 +19,8 @@ body {
   width: 100%;
   height: 100vh;
   position: relative;
-  background: url("https://i.ibb.co/vXqDmnh/background.jpg") no-repeat center
-    center/cover;
+  background: url("https://images.weserv.nl/?url=https://res.cloudinary.com/dwhsfh3sc/image/upload/v1659778071/zeplin-movies/movie-assets-imgs/background_keajjv.jpg")
+    no-repeat center center/cover;
 }
 
 .showcase::after {
@@ -143,7 +143,7 @@ input[type="password"] {
 }
 
 @media only screen and (min-width: 330px) and (max-width: 560px) {
-  .logo{
+  .logo {
     display: flex;
     justify-content: center;
   }
