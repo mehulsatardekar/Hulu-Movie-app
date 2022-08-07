@@ -1,4 +1,11 @@
-.page-404{
+.page-404 {
   height: 25rem;
   width: 40rem;
+}
+
+@media only screen and (min-width: 330px) and (max-width: 560px) {
+  .page-404 {
+    height: 25rem;
+    width: 24rem;
+  }
 }
