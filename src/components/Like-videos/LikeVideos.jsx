@@ -85,6 +85,7 @@ const LikeVideos = () => {
             <img
               src="https://res.cloudinary.com/dwhsfh3sc/image/upload/v1648998454/zeplin-movies/movie-assets-imgs/Film_rolls-rafiki_1_xvlluh.svg"
               alt="No-likes-video-found"
+              className="likevideo-404"
             />
 
             <h1 className="mt-3">Ahh huh.. No Liked Video Founds</h1>

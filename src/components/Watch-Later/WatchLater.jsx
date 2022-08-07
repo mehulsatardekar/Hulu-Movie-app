@@ -86,6 +86,7 @@ const WatchLater = () => {
             <img
               src="https://res.cloudinary.com/dwhsfh3sc/image/upload/v1649177894/zeplin-movies/movie-assets-imgs/watchlater_c861ux.png"
               alt="watch-later"
+              className="likevideo-404"
             />
 
             <h1 className="mt-3">Your Watch later section is clear!</h1>

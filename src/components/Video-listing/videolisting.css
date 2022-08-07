@@ -1,23 +1,28 @@
-
-:root{
-    --bg-card:white;
-    --card-col: whitesmoke;
+:root {
+  --bg-card: white;
+  --card-col: whitesmoke;
 }
 
-
-.close-icon:hover{
-   background: rgba(255, 255, 255, 0.24);
+.close-icon:hover {
+  background: rgba(255, 255, 255, 0.24);
 }
 
-.movie-card{
-    background: var(--bg-card);
-    border: 1px solid rgba(0,0,0,0.1);
+.movie-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.video-card{
-    background: #282b30;
-    color: var(--card-col);
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+.video-card {
+  background: #282b30;
+  color: var(--card-col);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 560px) {
+  .likevideo-404 {
+    height: 25rem;
+    width: 20rem;
   }
+}

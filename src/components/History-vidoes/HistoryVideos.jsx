@@ -84,6 +84,7 @@ const HistoryVideos = () => {
             <img
               src="https://res.cloudinary.com/dwhsfh3sc/image/upload/v1649177969/zeplin-movies/movie-assets-imgs/watchhistory_cpdmcz.png"
               alt="watch-history"
+              className="likevideo-404"
             />
 
             <h1 className="mt-3">Wohhhoo.. You're Watch History is cleared</h1>

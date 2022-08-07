@@ -71,8 +71,12 @@
   flex-wrap: wrap;
 }
 
-
-
 .nav-dropdown:hover .nav-dropdown-content {
   display: block;
+}
+
+@media only screen and (min-width: 330px) and (max-width: 560px) {
+  .nav-dropdown > .nav-dropdown-content {
+    left: 3px;
+  }
 }
