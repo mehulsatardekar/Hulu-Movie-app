@@ -1,50 +1,84 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
-import Home from "../UI/Pages/HomePage/HomePage";
-import SingleVideoPage from "../UI/Pages/SingleVideoPage/SingleVideoPage";
-import VideoListingPage from "../UI/Pages/VideoListingPage/VideoListingPage";
-import LikeVideoPage from "../UI/Pages/LikeVideoPage/LikeVideoPage";
-import HistoryPage from "../UI/Pages/HistoryPage/HistoryPage";
-import WatchLaterPage from "../UI/Pages/WatchLaterPage/WatchLaterPage";
-import PlayListPage from "../UI/Pages/PlaylistPage/PlaylistPage";
-import PlaylistMoviesPage from "../UI/Pages/PlaylistPage/PlaylistMoviesPage";
+import { NotFound, Navbar } from "../components";
+
+import {
+  HistoryPage,
+  HomePage,
+  LikeVideoPage,
+  PlaylistMoviesPage,
+  PlaylistPage,
+  SingleVideoPage,
+  VideoListingPage,
+  WatchLaterPage,
+  LoginPage,
+  SignupPage,
+} from "../UI/Pages";
 import {
   VideoDescriptionData,
   VideoData,
   UserHistoryData,
   WatchLaterData,
   PlayListData,
+  ToastContextData,
+  AuthContextData,
 } from "../contexts/index";
+
+import { ProtectedRoute } from "./ProtectedRoute";
 
 const Routing = () => {
   return (
     <>
       <Router>
-        <PlayListData>
-          <UserHistoryData>
-            <VideoDescriptionData>
-              <VideoData>
-                <WatchLaterData>
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/watch/:id" element={<SingleVideoPage />} />
-                    <Route path="/movies" element={<VideoListingPage />} />
-                    <Route path="/history" element={<HistoryPage />} />
-                    <Route path="/mockman" element={<Mockman />} />
-                    <Route path="/likeplaylist" element={<LikeVideoPage />} />
-                    <Route path="/watchlater" element={<WatchLaterPage />} />
-                    <Route path="/playlist" element={<PlayListPage />} />
-                    <Route
-                      path="/playlist/:title"
-                      element={<PlaylistMoviesPage />}
-                    />
-                  </Routes>
-                </WatchLaterData>
-              </VideoData>
-            </VideoDescriptionData>
-          </UserHistoryData>
-        </PlayListData>
+        <AuthContextData>
+          <ToastContextData>
+            <PlayListData>
+              <UserHistoryData>
+                <VideoDescriptionData>
+                  <VideoData>
+                    <WatchLaterData>
+                      <Navbar />
+                      <Routes>
+                        <Route path="/mockman" element={<Mockman />} />
+                        <Route element={<ProtectedRoute />}>
+                          <Route path="/" element={<HomePage />} />
+                          <Route
+                            path="/watch/:id"
+                            element={<SingleVideoPage />}
+                          />
+                          <Route
+                            path="/movies"
+                            element={<VideoListingPage />}
+                          />
+                          <Route
+                            path="/likeplaylist"
+                            element={<LikeVideoPage />}
+                          />
+                          <Route path="/history" element={<HistoryPage />} />
+                          <Route
+                            path="/watchlater"
+                            element={<WatchLaterPage />}
+                          />
+                          <Route path="/playlist" element={<PlaylistPage />} />
+
+                          <Route
+                            path="/playlist/:title"
+                            element={<PlaylistMoviesPage />}
+                          />
+                        </Route>
+
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/signup" element={<SignupPage />} />
+                        <Route path="*" element={<NotFound />} />
+                      </Routes>
+                    </WatchLaterData>
+                  </VideoData>
+                </VideoDescriptionData>
+              </UserHistoryData>
+            </PlayListData>
+          </ToastContextData>
+        </AuthContextData>
       </Router>
     </>
   );

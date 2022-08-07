@@ -3,27 +3,28 @@ import { viewsFormatter } from "../../utils/views-formatter";
 import { historyVideo } from "../../utils";
 import { useHistoryData, usePlayListData } from "../../hook";
 import { useParams, Link } from "react-router-dom";
+import { useToast } from "../../contexts";
 
 const MoviesList = () => {
   const { historyDispatch } = useHistoryData();
+  const { notifySuccess, notifyError } = useToast();
 
   const addVideoToHistory = async (movieDetail) => {
     const data = await historyVideo(movieDetail);
     if (data.status === 201) {
+      notifySuccess("video added to history");
       historyDispatch({ type: "ADD_TO_HISTORY", payload: movieDetail });
     }
-    console.log(data);
   };
 
   const title = useParams();
 
   const playlistTitle = title.title;
-  console.log(playlistTitle);
 
   const { playlistState, setPlaylistDispach } = usePlayListData();
 
   const removeFromPlaylist = (playlistTitle, videosid) => {
-    console.log(playlistTitle);
+    notifySuccess("Video Deleted from playlist");
     setPlaylistDispach({
       type: "REMOVE_VIDEO",
       payload: { title: playlistTitle, videoid: videosid },
@@ -42,7 +43,7 @@ const MoviesList = () => {
             >
               <div className="flex relative">
                 <img
-                  src={video.imgurl}
+                  src={`https://images.weserv.nl/?url=${video.imgurl}`}
                   alt={video.title}
                   className="ui-card-img img-restros"
                 />
@@ -97,4 +98,4 @@ const MoviesList = () => {
   );
 };
 
-export default MoviesList;
+export { MoviesList };

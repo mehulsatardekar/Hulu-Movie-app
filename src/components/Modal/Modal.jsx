@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import { usePlayListData } from "../../hook/";
 import { createPlayList } from "../../utils";
 import "./modal.css";
+import { useToast } from "../../contexts";
+
 const Modal = ({ STATUS, SETMODALSTATUS, MOVIEDETAIL }) => {
   const [userList, setUserList] = useState();
 
   const { playlistState, setPlaylistDispach } = usePlayListData();
+  const { notifySuccess, notifyError } = useToast();
 
   const playListCreate = async (playListTitle) => {
     const data = await createPlayList({
@@ -15,23 +18,20 @@ const Modal = ({ STATUS, SETMODALSTATUS, MOVIEDETAIL }) => {
     });
 
     if (data.status === 201) {
+      notifySuccess("Video Added to Playlist");
       setPlaylistDispach({
         type: "ADD_LIST",
         payload: { title: userList, videos: [MOVIEDETAIL] },
       });
     } else {
-      console.log("errror");
+      notifyError("Error occured while adding video to list");
     }
-    console.log("deleted data", data);
   };
 
-  console.log("playlist state", playlistState);
   return (
     <>
       <div
-        className={`modal ${STATUS ? "" : "hide"} md-effect-1 `}
-        id="modalExample"
-      >
+        className={`modal ${STATUS ? "" : "hide"} md-effect-1 modal-card`}>
         <div className="modal-container card-py modal-width modal-card">
           <div className="flex flex-between  flex-align-item-center pt-1 pb-1">
             <h1 className="font-mid-bold ">Playlist</h1>
@@ -57,6 +57,7 @@ const Modal = ({ STATUS, SETMODALSTATUS, MOVIEDETAIL }) => {
                       id={i + 1}
                       onChange={(e) => {
                         if (e.target.checked) {
+                          notifySuccess("Video Added to Playlist");
                           setPlaylistDispach({
                             type: "ADD_VIDEO",
                             payload: {
@@ -65,6 +66,7 @@ const Modal = ({ STATUS, SETMODALSTATUS, MOVIEDETAIL }) => {
                             },
                           });
                         } else {
+                          notifySuccess("Video Removed from Playlist");
                           setPlaylistDispach({
                             type: "REMOVE_VIDEO",
                             payload: {
@@ -114,4 +116,4 @@ const Modal = ({ STATUS, SETMODALSTATUS, MOVIEDETAIL }) => {
   );
 };
 
-export default Modal;
+export { Modal };

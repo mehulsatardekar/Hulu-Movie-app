@@ -1,14 +1,16 @@
 import React from "react";
-import { Navbar, List } from "../../../components";
+import { List } from "../../../components";
 import { usePlayListData } from "../../../hook/";
 import { Link } from "react-router-dom";
 import "./playlistpage.css";
+import { Toaster } from "react-hot-toast";
+
 const PlaylistPage = () => {
   const { playlistState } = usePlayListData();
 
   return (
     <>
-      <Navbar />
+      <Toaster position="bottom-center" reverseOrder={false} />
 
       <main className="mt-3">
         <section className="video-lists-container flex flex-wrap gap">
@@ -19,7 +21,7 @@ const PlaylistPage = () => {
           </h1>
         </section>
         <section>
-          <div className="flex flex-wrap gap pb-2 video-lists-container  mt-1">
+          <div className="flex flex-wrap gap pb-2 video-lists-container  mt-1 video-lists">
             {playlistState.length !== 0 &&
               playlistState.map((playlist, index) => {
                 return (
@@ -53,4 +55,4 @@ const PlaylistPage = () => {
   );
 };
 
-export default PlaylistPage;
+export { PlaylistPage };

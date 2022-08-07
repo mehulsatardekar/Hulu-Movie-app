@@ -1,37 +1,39 @@
 import React from "react";
-import HomeContainer from "../../../components/Home-container/HomeContainer";
-import MustWatch from "../../../components/Must-watch/MustWatch";
-import { Navbar } from "../../../components";
+import { HomeContainer, MustWatch } from "../../../components";
 import { Link } from "react-router-dom";
 import "./homepage.css";
+import { Toaster } from "react-hot-toast";
+
 const HomePage = () => {
   return (
     <>
-      <Navbar />
+      <Toaster position="bottom-center" reverseOrder={false} />
       <main>
         <HomeContainer />
 
-        <div className="container pt-1">
-          <div className="flex flex-between">
-            <div>
-              <span className="font-bold label-text label-text-dark">
-                Mustwatch
-              </span>
-            </div>
-            <div>
-              <Link to="/movies">
-                <span className="label-text ">See More</span>
-              </Link>
+        <section className="mt-3">
+          <div className="container pt-3">
+            <div className="flex flex-between">
+              <div>
+                <span className="font-bold label-text label-text-dark">
+                  Mustwatch
+                </span>
+              </div>
+              <div>
+                <Link to="/movies">
+                  <span className="label-text ">See More</span>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="flex flex-wrap gap pb-3 flex-justify-center mt-2">
-          <MustWatch />
-        </div>
+          <div className="flex flex-wrap gap pb-3 flex-justify-center mt-2">
+            <MustWatch />
+          </div>
+        </section>
       </main>
     </>
   );
 };
 
-export default HomePage;
+export { HomePage };

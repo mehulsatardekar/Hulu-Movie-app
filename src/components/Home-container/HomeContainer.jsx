@@ -1,23 +1,23 @@
-import React ,{useRef , useEffect, useState} from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./home-container.css";
 const HomeContainer = () => {
   const videoElement = useRef(null);
 
-  const [muteState, setMuteState] = useState(false)
-  useEffect(()=>{
-    videoElement.current.muted=muteState
-  })
+  const [muteState, setMuteState] = useState(false);
+  useEffect(() => {
+    videoElement.current.muted = muteState;
+  });
 
-  const toggleVideoMute = ()=>{
+  const toggleVideoMute = () => {
     setMuteState(!muteState);
-    videoElement.current.muted=muteState
-  }
+    videoElement.current.muted = muteState;
+  };
   return (
     <section className="header">
       <div className="overlay"></div>
-      <video autoPlay ref={videoElement}>
+      <video autoPlay={true} ref={videoElement} muted>
         <source
-          src="https://nmovies.netlify.app/web-series-trailer/web-seren-trailer/witcher.mp4"
+          src="https://res.cloudinary.com/dwhsfh3sc/video/upload/v1659713016/zeplin-movies/movie-vids/witcher_1_vjkewq.mp4"
           type="video/mp4"
         />
       </video>
@@ -53,7 +53,7 @@ const HomeContainer = () => {
 
             <div className="badge" onClick={toggleVideoMute}>
               <span className="material-icons icon-badge badge-status-shadow">
-                {(muteState)?'volume_off':'volume_up'}
+                {muteState ? "volume_off" : "volume_up"}
               </span>
             </div>
           </div>
@@ -63,4 +63,4 @@ const HomeContainer = () => {
   );
 };
 
-export default HomeContainer;
+export { HomeContainer };

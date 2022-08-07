@@ -1,10 +1,12 @@
 import React from "react";
-import { MoviesList, Navbar } from "../../../components";
+import { MoviesList } from "../../../components";
+import { Toaster } from "react-hot-toast";
 
 const PlaylistMoviesPage = () => {
   return (
     <>
-      <Navbar />
+      <Toaster position="bottom-center" reverseOrder={false} />
+
       <main className="mt-3">
         <section>
           <div className="flex flex-wrap gap pb-3 video-lists-container  mt-1">
@@ -16,4 +18,4 @@ const PlaylistMoviesPage = () => {
   );
 };
 
-export default PlaylistMoviesPage;
+export { PlaylistMoviesPage };

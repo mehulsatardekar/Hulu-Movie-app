@@ -18,8 +18,11 @@ import {
   WatchLaterData,
 } from "./watch-later/WatchLaterContext";
 
-
 import { PlayListContext, PlayListData } from "./playlist/PlaylistContext";
+export { ToastContextData, useToast } from "./toast/ToastContext";
+export { AuthContextData, useAuth } from './auth/AuthContext';
+
+
 export {
   VideoDataContext,
   VideoDescriptionContext,
@@ -31,5 +34,4 @@ export {
   WatchLaterData,
   PlayListContext,
   PlayListData,
-
 };

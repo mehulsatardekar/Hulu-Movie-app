@@ -9,9 +9,11 @@ import {
 import { useWatchLaterData } from "../../hook";
 
 import "./mustwatch.css";
+import { useToast } from "../../contexts";
 
 const MustWatch = () => {
   const [videos, setVideos] = useState([]);
+  const { notifySuccess, notifyError } = useToast();
 
   const getMoviesData = async () => {
     try {
@@ -36,6 +38,7 @@ const MustWatch = () => {
     const data = await addwatchLater(video);
 
     if (data.status === 201) {
+      notifySuccess("Video Added To Watch Later");
       watchLaterDispatch({ type: "ADD_TO_WATCH_LATER", payload: video });
     }
   };
@@ -43,6 +46,7 @@ const MustWatch = () => {
   const removeToWatchLater = async (video, videoid) => {
     const data = await deletewatchLater(videoid);
     if (data.status === 200) {
+      notifySuccess("Video Removed From Watch Later");
       watchLaterDispatch({ type: "REMOVE_FROM_WATCH_LATER", payload: video });
     }
   };
@@ -57,7 +61,7 @@ const MustWatch = () => {
           >
             <div className="flex relative">
               <img
-                src={video.imgurl}
+                src={`https://images.weserv.nl/?url=${video.imgurl}`}
                 alt={video.title}
                 className="ui-card-img img-restros"
               />
@@ -122,4 +126,4 @@ const MustWatch = () => {
   );
 };
 
-export default MustWatch;
+export { MustWatch };

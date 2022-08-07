@@ -1,47 +1,78 @@
-@import url('https://framer-ui.netlify.app/components/framer.css');
-
-:root{
-   
-    --border-black-op: rgba(0,0,0,0.1);
+:root {
+  --border-black-op: rgba(0, 0, 0, 0.1);
+  --navhover-text-color: #664ce5;
+  --dropdown-content-bg-color: #3a4458;
 }
 
-.nav{
-    padding: 1rem;
-    color: var(--txt-col-black);
-}
-.nav-zindex{
-    z-index: 999;
+.nav-zindex {
+  z-index: 99;
 }
 
-.navbar-bg{
-    padding: 1rem 1rem 0;
-    border-bottom: 1px solid var(--border-black-op);
-  }
+.navbar-bg {
+  padding: 1rem 1rem 0;
+  border-bottom: 1px solid var(--border-black-op);
+}
 
-  .col-black{
-      color: var(--col-dark);
-  }
-  .fixed-top {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 4;
+.col-black {
+  color: var(--col-dark);
+}
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 4;
 }
 
 .solid {
-    background-color:#1A202C;
-    transition: background-color 0s ease 0s;
-    box-shadow: 0 0 0.8rem rgb(0, 0, 0);
-  }
-  
-.actives{
-    color: var(--txt-col-white);
-    text-decoration: none;
-
+  background-color: #1a202c;
+  transition: background-color 0s ease 0s;
+  box-shadow: 0 0 0.8rem rgb(0, 0, 0);
 }
 
-.inactives{
-    color: rgba(255, 255, 255, 0.634);
-    text-decoration: none;
+.actives {
+  color: var(--txt-col-white);
+  text-decoration: none;
+}
+
+.inactives {
+  color: rgba(255, 255, 255, 0.634);
+  text-decoration: none;
+}
+
+.nav-dropbtn {
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-dropdown > .nav-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--dropdown-content-bg-color);
+  min-width: 10rem;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-top: 0.9rem;
+  right: 3px;
+}
+
+.nav-dropdown-content .nav-dropdown-option {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.9rem 1rem;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  flex-wrap: wrap;
+}
+
+
+
+.nav-dropdown:hover .nav-dropdown-content {
+  display: block;
 }

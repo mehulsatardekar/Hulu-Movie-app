@@ -1,12 +1,6 @@
-
-
-.modal-width{
-    width: 30%;
+.modal > .modal-card {
+  background: #1a202c;
 }
-
-.modal-card{
-  background:  #1A202C;
+.modal-width {
+  width: 30%;
 }
-
-
-

@@ -3,12 +3,17 @@ import { Link } from "react-router-dom";
 import "./list.css";
 import { usePlayListData } from "../../hook";
 import { deletePlayList } from "../../utils/";
+import { useToast } from "../../contexts";
+
 const List = ({ title, videos, id }) => {
   const { setPlaylistDispach } = usePlayListData();
+  const { notifySuccess, notifyError } = useToast();
+
   const playListDelete = async (title) => {
     const deletePlayListData = await deletePlayList(title);
 
     if (deletePlayListData.status === 200) {
+      notifySuccess("Playlist Deleted");
       setPlaylistDispach({ type: "DELETE_LIST", payload: title });
     }
   };
@@ -18,6 +23,7 @@ const List = ({ title, videos, id }) => {
       <div
         className="flex shadow-sm  flex flex-column list-card gap-1"
         key={id}
+        id="list-card"
       >
         <div className="flex flex-between gap-3">
           <Link to={`${title}`} className="playlist-text">
@@ -26,6 +32,7 @@ const List = ({ title, videos, id }) => {
           <span
             className="material-icons icons"
             onClick={() => playListDelete(title)}
+            title="delete list"
           >
             delete
           </span>
@@ -38,4 +45,4 @@ const List = ({ title, videos, id }) => {
   );
 };
 
-export default List;
+export { List };

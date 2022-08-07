@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { viewsFormatter } from "../../utils/views-formatter";
-import { addwatchLater, deletewatchLater , historyVideo } from "../../utils";
-import { useWatchLaterData ,useHistoryData } from "../../hook";
+import { addwatchLater, deletewatchLater, historyVideo } from "../../utils";
+import { useWatchLaterData, useHistoryData } from "../../hook";
+import { useToast } from "../../contexts";
 
 import "./videolisting.css";
 const VideoListing = ({ VIDEOS }) => {
@@ -11,23 +12,23 @@ const VideoListing = ({ VIDEOS }) => {
     watchLaterDispatch,
   } = useWatchLaterData();
 
-  const {historyState, historyDispatch} = useHistoryData();
+  const { historyState, historyDispatch } = useHistoryData();
+  const { notifySuccess, notifyError } = useToast();
 
-
-  
-  const addVideoToHistory = async(movieDetail)=>{
+  const addVideoToHistory = async (movieDetail) => {
     const data = await historyVideo(movieDetail);
-    if(data.status === 201){
-     historyDispatch({type:'ADD_TO_HISTORY', payload:movieDetail})
-
+    if (data.status === 201) {
+      notifySuccess("Video added to history");
+      historyDispatch({ type: "ADD_TO_HISTORY", payload: movieDetail });
     }
-    console.log(data);
-}
+  };
 
   const addToWatchLater = async (video) => {
     const data = await addwatchLater(video);
 
     if (data.status === 201) {
+      notifySuccess("Video added to watch later");
+
       watchLaterDispatch({ type: "ADD_TO_WATCH_LATER", payload: video });
     }
   };
@@ -35,11 +36,11 @@ const VideoListing = ({ VIDEOS }) => {
   const removeToWatchLater = async (video, videoid) => {
     const data = await deletewatchLater(videoid);
     if (data.status === 200) {
+      notifySuccess("Video remove from watch later");
       watchLaterDispatch({ type: "REMOVE_FROM_WATCH_LATER", payload: video });
     }
   };
 
-  console.table(watchLaterVideos);
   return (
     <>
       {VIDEOS?.map((video) => {
@@ -50,7 +51,7 @@ const VideoListing = ({ VIDEOS }) => {
           >
             <div className="flex relative">
               <img
-                src={video.imgurl}
+                src={`https://images.weserv.nl/?url=${video.imgurl}`}
                 alt={video.title}
                 className="ui-card-img img-restros"
               />
@@ -102,7 +103,9 @@ const VideoListing = ({ VIDEOS }) => {
               <Link
                 to={`/watch/${video._id}`}
                 className="btn-primary btn btn-sm width-full"
-                 onClick={()=>{addVideoToHistory(video)}}
+                onClick={() => {
+                  addVideoToHistory(video);
+                }}
               >
                 Watch Now
               </Link>
@@ -114,4 +117,4 @@ const VideoListing = ({ VIDEOS }) => {
   );
 };
 
-export default VideoListing;
+export { VideoListing };

@@ -1,40 +1,40 @@
-import React, { useState, useEffect , useCallback} from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./video-description.css";
 
 import { viewsFormatter } from "../../utils/views-formatter";
-import { useSingleVideoData, useDescriptionData, } from "../../hook/";
+import { useSingleVideoData, useDescriptionData } from "../../hook/";
 
 import { likeVideo } from "../../utils/";
 
-import {Toast, Modal} from '../index'
+import { Toast, Modal } from "../index";
+import { useToast } from "../../contexts";
 
 const VideoDescription = () => {
   const [responseStatus, setResponseStatus] = useState();
- const [modalStatus, setModalStatus] = useState(null);
+  const [modalStatus, setModalStatus] = useState(null);
   const { movieDetail, watchId } = useSingleVideoData();
+  const { notifySuccess, notifyError } = useToast();
+
   const {
     likeVideoState: { likedVideos },
     likeVideoDispatch,
   } = useDescriptionData();
 
-
-
   const addLike = async () => {
     const datas = await likeVideo(movieDetail);
     if (datas.status === 201) {
+      notifySuccess("Video liked");
       likeVideoDispatch({ type: "LIKE", payload: movieDetail });
       setResponseStatus(201);
     } else if (datas.status === 409) {
+      notifySuccess("Video is already liked");
       setResponseStatus(409);
     }
   };
 
-
-
   console.log();
   return (
     <>
-
       <div className="video-title ">
         <h2>{movieDetail.title}</h2>
       </div>
@@ -69,21 +69,27 @@ const VideoDescription = () => {
                 : "Like"}
             </span>
           </div>
-          <div className="dislike flex flex-justify-center flex-align-item-center gap-1">
-            <span className="material-icons icons">thumb_down_off_alt</span>
-            <span>Dislike</span>
-          </div>
           <div className="share flex flex-justify-center flex-align-item-center gap-1">
             <span className="material-icons icons">share</span>
             <span>Share</span>
           </div>
 
-          <div className="dislike flex flex-justify-center flex-align-item-center gap-1"
-           onClick={()=>{ setModalStatus(true)} }>
+          <div
+            className="dislike flex flex-justify-center flex-align-item-center gap-1"
+            onClick={() => {
+              setModalStatus(true);
+            }}
+          >
             <span className="material-icons icons">bookmark_border</span>
             <span>Add To Playlist</span>
           </div>
-          {modalStatus && <Modal STATUS={modalStatus} SETMODALSTATUS={setModalStatus} MOVIEDETAIL={movieDetail}/> }
+          {modalStatus && (
+            <Modal
+              STATUS={modalStatus}
+              SETMODALSTATUS={setModalStatus}
+              MOVIEDETAIL={movieDetail}
+            />
+          )}
         </div>
       </div>
       <hr />
@@ -95,4 +101,4 @@ const VideoDescription = () => {
   );
 };
 
-export default VideoDescription;
+export { VideoDescription };

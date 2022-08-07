@@ -17,7 +17,7 @@ const VideoData = ({ children }) => {
         setMovieDetail(videoData.data.video);
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 

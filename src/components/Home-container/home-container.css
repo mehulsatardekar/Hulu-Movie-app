@@ -1,95 +1,90 @@
-@import url('https://framer-ui.netlify.app/components/framer.css');
-
-:root{
-    --col-white:white;
-    --col-black: black;
-    --btn-bg:rgba(37, 36, 36, 0.493);
+:root {
+  --col-white: white;
+  --col-black: black;
+  --btn-bg: rgba(37, 36, 36, 0.493);
 }
-.header{
-    position: relative;
-    background-color: var(--col-black);
-    height: 90vh;
-    min-height: 25rem;
-    width: 100%;
-    overflow: hidden;
+.header {
+  background-color: var(--col-black);
+  height: 90vh;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
 }
 
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: var(--col-black);
-    opacity: 0;
-    z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--col-black);
+  opacity: 0;
+  z-index: 1;
 }
 
 video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: 0;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background-size: cover;
 }
 
-.video-img-title{
-    max-width: 20.625rem;
-    margin-top: 9.375rem;
-    margin-left: 3rem;
+.video-img-title {
+  max-width: 20.625rem;
+  margin-top: 9.375rem;
+  margin-left: 3rem;
 }
 
-.movie-info{
-    position: absolute;
-    z-index: 1;
-
+.movie-info {
+  position: absolute;
+  z-index: 1;
 }
 
-.text-white{
-    color: var(--col-white);
+.text-white {
+  color: var(--col-white);
 }
 
-.w-50{
-    width: 40%;
+.w-50 {
+  width: 40%;
 }
 
-.ml-3{
-    margin-left: 3rem;
+.ml-3 {
+  margin-left: 3rem;
 }
 
-.movie-desc{
-    line-height: 1.5rem;
-    cursor: pointer;
+.movie-desc {
+  line-height: 1.5rem;
+  cursor: pointer;
 }
 
-.movie-rating-btn{
-    background: var(--btn-bg);
-    border: 0;
-    color: var(--col-white);
-    border-radius: 3px;
+.movie-rating-btn {
+  background: var(--btn-bg);
+  border: 0;
+  color: var(--col-white);
+  border-radius: 3px;
 }
 
-.movie-rating-btn:hover{
-    background-color: rgba(69, 68, 68, 0.493);
-    cursor: pointer;
-
+.movie-rating-btn:hover {
+  background-color: rgba(69, 68, 68, 0.493);
+  cursor: pointer;
 }
 
-.play-btn{
-    background: var(--btn-bg);
-    border: 0;
-    color: var(--col-white);
+.play-btn {
+  background: var(--btn-bg);
+  border: 0;
+  color: var(--col-white);
 }
 
-.play-btn:hover{
-   background: var(--col-white);;
-   color: var(--col-black);;
+.play-btn:hover {
+  background: var(--col-white);
+  color: var(--col-black);
 }

@@ -1,55 +1,54 @@
-import React, {useEffect, useState} from "react";
-import VideoPlayer from "../../../components/Video-player/VideoPlayer";
-import VideoDescription from "../../../components/Video-descritpion/VideoDescription";
-import Videos from "../../../components/Video-listing/VideoListing";
+import React, { useEffect, useState } from "react";
+import {
+  VideoPlayer,
+  VideoDescription,
+  VideoListing,
+} from "../../../components/";
 
 import { VideoData } from "../../../contexts/single-video-page/VideoDataContext";
 
-import { Navbar } from "../../../components";
 import { moviesDataFetcher } from "../../../utils/movies-data-fetcher";
-
-import {useSingleVideoData, useDescriptionData} from '../../../hook'
 import "./singlevideopage.css";
+import { Toaster } from "react-hot-toast";
 
 const SingleVideoPage = () => {
-  const [videos, setVideos] = useState([])
+  const [videos, setVideos] = useState([]);
 
-  const getMoviesData  = async()=>{
-    try{
-       const videoData =  await moviesDataFetcher();
-       if(videoData.status === 200){
-           setVideos(videoData.data.videos);
-       }
-    }catch(err){
-        console.error(err);
+  const getMoviesData = async () => {
+    try {
+      const videoData = await moviesDataFetcher();
+      if (videoData.status === 200) {
+        setVideos(videoData.data.videos);
+      }
+    } catch (err) {
+      console.error(err);
     }
-}
+  };
 
-useEffect(()=>{
- getMoviesData();
-},[])
+  useEffect(() => {
+    getMoviesData();
+  }, []);
   return (
     <>
-    
-    <Navbar/>
-    <main className="flex video-container mb-3">
-      <div className="flex-7">
-        <VideoData>
-          <VideoPlayer />
+      <Toaster position="bottom-center" reverseOrder={false} />
 
-          
-          <VideoDescription />
-        </VideoData>
-      </div>
-      <div className="flex-3 ">
-        <div className="flex flex-wrap gap pb-3 flex-justify-center mt-2">
-          {/* card starts here */}
-          <Videos  VIDEOS={videos}/>
+      <main className="flex video-container mb-3">
+        <div className="flex-7">
+          <VideoData>
+            <VideoPlayer />
+
+            <VideoDescription />
+          </VideoData>
         </div>
-      </div>
-    </main>
+        <div className="flex-3 ">
+          <div className="flex flex-wrap gap pb-3 flex-justify-center mt-2">
+            {/* card starts here */}
+            <VideoListing VIDEOS={videos} />
+          </div>
+        </div>
+      </main>
     </>
   );
 };
 
-export default SingleVideoPage;
+export { SingleVideoPage };

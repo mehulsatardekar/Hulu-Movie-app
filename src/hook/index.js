@@ -13,3 +13,5 @@ export {
   useWatchLaterData,
   usePlayListData,
 };
+
+export { useUserDetails } from "./useUserDetails";

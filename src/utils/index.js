@@ -13,6 +13,15 @@ import { moviesDataFetcher } from "./movies-data-fetcher";
 
 import { createPlayList, deletePlayList } from "./playlist";
 export {
+  emailRegex,
+  wrongEmailMessage,
+  passwordRegex,
+  wrongPasswordMessage,
+  loginValidationSchema,
+  signupValidationSchema,
+} from "./formikValidators";
+
+export {
   likeVideo,
   likeVideoFetcher,
   deleteLikeVideo,
